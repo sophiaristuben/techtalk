@@ -1,0 +1,1 @@
+{"rustc":12212379018557002179,"features":"[]","target":5495102858807384595,"profile":3567329628440936607,"path":243767816648854527,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/leb128-32ba461cf60da4b2/dep-lib-leb128"}}],"rustflags":["--cfg=web_sys_unstable_apis"],"metadata":13168071815078629678,"config":2202906307356721367,"compile_kind":0}

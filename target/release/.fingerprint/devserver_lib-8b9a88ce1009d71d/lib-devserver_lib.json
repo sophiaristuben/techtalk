@@ -1,0 +1,1 @@
+{"rustc":12212379018557002179,"features":"[]","target":9483653726117373810,"profile":3567329628440936607,"path":11300392191583050761,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/devserver_lib-8b9a88ce1009d71d/dep-lib-devserver_lib"}}],"rustflags":["--cfg=web_sys_unstable_apis"],"metadata":2381860827167193674,"config":2202906307356721367,"compile_kind":0}

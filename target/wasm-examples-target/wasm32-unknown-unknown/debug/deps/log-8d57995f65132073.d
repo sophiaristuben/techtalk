@@ -1,0 +1,10 @@
+/Users/sophiaristuben/cs181g/techtalk/connect4/target/wasm-examples-target/wasm32-unknown-unknown/debug/deps/liblog-8d57995f65132073.rmeta: /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/lib.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/macros.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/serde.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/__private_api.rs
+
+/Users/sophiaristuben/cs181g/techtalk/connect4/target/wasm-examples-target/wasm32-unknown-unknown/debug/deps/liblog-8d57995f65132073.rlib: /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/lib.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/macros.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/serde.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/__private_api.rs
+
+/Users/sophiaristuben/cs181g/techtalk/connect4/target/wasm-examples-target/wasm32-unknown-unknown/debug/deps/log-8d57995f65132073.d: /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/lib.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/macros.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/serde.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/__private_api.rs
+
+/Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/lib.rs:
+/Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/macros.rs:
+/Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/serde.rs:
+/Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.20/src/__private_api.rs:
