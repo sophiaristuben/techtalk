@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>connect4</title>
+  <style type="text/css">
+    body { margin: 0px; }
+  </style>
+</head>
+
+<body>
+  <script type="module">
+    import init from "target/wasm-examples/connect4/connect4.js";
+    window.addEventListener("load", () => {
+      init();
+    });
+  </script>
+
+</body>
+
+</html>
