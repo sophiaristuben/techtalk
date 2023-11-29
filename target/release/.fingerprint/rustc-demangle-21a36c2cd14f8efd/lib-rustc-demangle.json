@@ -1,1 +1,0 @@
-{"rustc":12212379018557002179,"features":"[]","target":4592633394532721375,"profile":3567329628440936607,"path":7513207128489732161,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/rustc-demangle-21a36c2cd14f8efd/dep-lib-rustc-demangle"}}],"rustflags":["--cfg=web_sys_unstable_apis"],"metadata":14996600717891802618,"config":2202906307356721367,"compile_kind":0}

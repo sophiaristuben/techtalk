@@ -1,1 +1,0 @@
-/Users/sophiaristuben/cs181g/techtalk/target/wasm-examples-target/wasm32-unknown-unknown/debug/connect4.wasm: /Users/sophiaristuben/cs181g/techtalk/connect4/src/input.rs /Users/sophiaristuben/cs181g/techtalk/connect4/src/main.rs /Users/sophiaristuben/cs181g/techtalk/connect4/src/shader.wgsl /Users/sophiaristuben/cs181g/techtalk/connect4/src/shader2.wgsl

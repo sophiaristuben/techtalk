@@ -1,9 +1,0 @@
-/Users/sophiaristuben/cs181g/techtalk/connect4/target/wasm-examples-target/wasm32-unknown-unknown/debug/deps/libwasm_bindgen_futures-15ad5b177a922f21.rmeta: /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/lib.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/queue.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/task/singlethread.rs
-
-/Users/sophiaristuben/cs181g/techtalk/connect4/target/wasm-examples-target/wasm32-unknown-unknown/debug/deps/libwasm_bindgen_futures-15ad5b177a922f21.rlib: /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/lib.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/queue.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/task/singlethread.rs
-
-/Users/sophiaristuben/cs181g/techtalk/connect4/target/wasm-examples-target/wasm32-unknown-unknown/debug/deps/wasm_bindgen_futures-15ad5b177a922f21.d: /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/lib.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/queue.rs /Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/task/singlethread.rs
-
-/Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/lib.rs:
-/Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/queue.rs:
-/Users/sophiaristuben/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.39/src/task/singlethread.rs:

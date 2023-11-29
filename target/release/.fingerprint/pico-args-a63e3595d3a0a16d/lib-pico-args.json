@@ -1,1 +1,0 @@
-{"rustc":12212379018557002179,"features":"[\"default\"]","target":4917967070494462172,"profile":3567329628440936607,"path":14466364273924637303,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/pico-args-a63e3595d3a0a16d/dep-lib-pico-args"}}],"rustflags":["--cfg=web_sys_unstable_apis"],"metadata":892698900381091767,"config":2202906307356721367,"compile_kind":0}
