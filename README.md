@@ -114,7 +114,7 @@ members = ["run-wasm", "connect4"]
 
 Resources:
 [Cargo run wasm](https://github.com/rukai/cargo-run-wasm)
-
+[Implement a WebAssembly WebGL viewer using Rust](https://blog.logrocket.com/implement-webassembly-webgl-viewer-using-rust/)
 
 
 
