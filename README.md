@@ -7,12 +7,12 @@
 
    ```markdown
    Workspace
-   ├── game folder
-   ├── engine folder
-   ├── src folder
-      ├── main.rs
-   ├── Cargo.lock
-   └── Cargo.toml
+   L game folder
+   L engine folder
+   L src folder
+   L Cargo.toml
+   L Cargo.lock
+
 
 3. In the new `Cargo.toml` file of the workspace:
 ```toml
@@ -23,30 +23,30 @@ members = ["run-wasm", "connect4"]
 4. Create a new folder called run-wasm by typing the following command in the terminal:
 `cargo new --bin run-wasm`
 
- ```markdown
-Workspace
-L game folder
-L engine folder
-L content folder
-L src folder
-L target folder
-L run-wasm folder
+    ```markdown
+   Workspace
+   L game folder
+   L engine folder
+   L content folder
    L src folder
-      L main.rs
-   L Cargo.toml
-L Cargo.lock
+   L target folder
+   L run-wasm folder
+      L src folder
+         L main.rs
+      L Cargo.toml
+   L Cargo.lock
 
 6. Paste this in the Cargo.toml inside the run-wasm folder
-```
-[package]
-name = "run-wasm"
-version = "0.1.0"
-edition = "2021"
-
-
-[dependencies]
-cargo-run-wasm = "0.3.0"
-```
+   ```
+   [package]
+   name = "run-wasm"
+   version = "0.1.0"
+   edition = "2021"
+   
+   
+   [dependencies]
+   cargo-run-wasm = "0.3.0"
+   ```
 
 6. Paste this in the main.rs file of the run-wasm folder
 ```
@@ -56,23 +56,24 @@ fn main() {
 ```
 
 7. Inside workspace create a `.cargo/config` and paste this inside:
-```
-[alias]
-run-wasm = "run --release --package run-wasm --"
-```
-so your workspace looks like
-   ```markdown
-   Workspace
-   ├── .cargo
-      ├── config
-   ├── game folder
-   ├── engine folder
-   ├── src folder
-      ├── main.rs
-   ├── Cargo.lock
-   └── Cargo.toml
+   ```
+   [alias]
+   run-wasm = "run --release --package run-wasm --"
+   ```
 
-8. In the workspace terminal run ``cargo run-wasm –bin <game folder name>`
+   so your workspace looks like
+      ```markdown
+      Workspace
+      ├── .cargo
+         ├── config
+      ├── game folder
+      ├── engine folder
+      ├── src folder
+         ├── main.rs
+      ├── Cargo.lock
+      └── Cargo.toml
+
+8. In the workspace terminal run `cargo run-wasm –bin <game folder name>`
 
 9. Now we need to add our png and content for access. The cheat solution is just to put the content folder inside the target/wasm-examples/<your_game_name> folder
       ```markdown
