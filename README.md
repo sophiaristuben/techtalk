@@ -106,8 +106,8 @@ members = ["run-wasm", "<game_name>"]
 `RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package <game_name>`
 
 
-**To implement Asset Manager**
-12. Add the following in the Cargo.toml file of your workspace
+**To implement Asset Manager**  \newline
+12. Add the following in the Cargo.toml file of your game
       - Under [dependencies] ->  `assets_manager = { version="0.10", features=["png","gltf","embedded"] }`
       - Under [features] ->`webgl = ["wgpu/webgl", "vbuf"]`
 
