@@ -98,12 +98,12 @@ members = ["run-wasm", "<game_name>"]
       L Cargo.lock
       L Cargo.toml
 
-      You should get something like *http://localhost:8000* which you can paste into your browser.
+      You should get something like *http://localhost:8000* which you can paste into your browser. This will be blank because our png files are local.
 
 **If you wish to implement asset manager, go to step 12 and then come back.**
 
 11. Run this command in the workspace:
-`RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package <game_name> --features webgl`
+`RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package <game_name>`
 
 
 **To implement Asset Manager**
