@@ -16,7 +16,6 @@ wgpu = "0.17"
 winit = "0.28.6"
 getrandom = { version = "0.2", features = ["js"] }
 assets_manager = { version="0.10", features=["png","gltf","embedded"] }
-frenderer = "0.7.6"
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 js-sys = "0.3.64"

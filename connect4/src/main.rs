@@ -1,14 +1,22 @@
 use assets_manager::{source, AssetCache};
 use bytemuck::{Pod, Zeroable};
-use image::{DynamicImage, GenericImageView};
+use image::DynamicImage;
 use std::{borrow::Cow, mem};
 use winit::{
     event::{Event, WindowEvent},
     event_loop::{ControlFlow, EventLoop},
     window::Window,
 };
+use assets_manager::source::{Embedded, FileSystem};
 
 mod input;
+
+#[cfg(target_arch = "wasm32")]
+// type AssetCacheType = AssetCache<Embedded>;
+type AssetCacheType<'a> = AssetCache<Embedded<'a>>;
+
+#[cfg(not(target_arch = "wasm32"))]
+type AssetCacheType = AssetCache<FileSystem>;
 
 #[repr(C)]
 #[derive(Clone, Copy, bytemuck::Zeroable, bytemuck::Pod)]
@@ -185,7 +193,7 @@ const SPRITES: SpriteOption = SpriteOption::VertexBuffer;
 #[cfg(all(feature = "vbuf", feature = "uniform"))]
 compile_error!("Can't choose both vbuf and uniform sprite features");
 
-async fn run(event_loop: EventLoop<()>, window: Window, cache: AssetCache) {
+async fn run(event_loop: EventLoop<()>, window: Window, cache: AssetCacheType<'_>) {
     let size = window.inner_size();
 
     log::info!("Use sprite mode {:?}", SPRITES);
@@ -558,7 +566,7 @@ async fn run(event_loop: EventLoop<()>, window: Window, cache: AssetCache) {
 
 
     let yellow = cache
-    .load::<assets_manager::asset::Png>("connect4v2")
+    .load::<assets_manager::asset::Png>("yellowWins")
     .unwrap();
     let (tex_yellow, _win_img) = load_texture(&yellow.read().0, None, &device, &queue).unwrap();
     // let (tex_yellow, _win_image) = load_texture("content/yellowWins.png",None, &device, &queue)
@@ -566,7 +574,7 @@ async fn run(event_loop: EventLoop<()>, window: Window, cache: AssetCache) {
     //     .expect("Couldn't load game over img");
 
     let red = cache
-    .load::<assets_manager::asset::Png>("connect4v2")
+    .load::<assets_manager::asset::Png>("redWins")
     .unwrap();
     let (tex_red, _win_img) = load_texture(&red.read().0, None, &device, &queue).unwrap();
     
@@ -860,8 +868,8 @@ fn main() {
 
     #[cfg(not(target_arch = "wasm32"))]
     {
-        let source = assets_manager::source::FileSystem::new("./content").unwrap();
-        let cache = AssetCache::with_source(source);
+        let source: FileSystem = FileSystem::new("./content").unwrap();
+        let cache: AssetCache = AssetCache::with_source(source);
         env_logger::init();
         pollster::block_on(run(event_loop, window, cache));
     }
@@ -871,8 +879,8 @@ fn main() {
         console_log::init_with_level(log::Level::Trace).expect("could not initialize logger");
         use winit::platform::web::WindowExtWebSys;
 
-        let source = assets_manager::source::Embedded::from(source::embed!("./content"));
-        let cache = AssetCache::with_source(source);
+        let source = Embedded::from(source::embed!("connect4/content"));
+        let cache: AssetCacheType = AssetCache::with_source(source);
 
 
         // On wasm, append the canvas to the document body
