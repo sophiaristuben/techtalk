@@ -77,9 +77,6 @@ members = ["run-wasm", "<game_name>"]
 
    And add below:
    ```
-   [dependencies]
-   getrandom = { version = "0.2", features = ["js"] }
-   
    [target.'cfg(target_arch = "wasm32")'.dependencies]
    js-sys = "0.3.64"
    console_error_panic_hook = "0.1.7"
