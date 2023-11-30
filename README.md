@@ -135,20 +135,20 @@ To implement Asset Manager:
          type AssetCacheType = AssetCache<FileSystem>;
          ```
       - In the main() function under the instantiation of event_loop and window
-        ```
-       #[cfg(not(target_arch = "wasm32"))]
-          {
-              let source = assets_manager::source::FileSystem::new("./content").unwrap();
-              let cache = AssetCache::with_source(source);
-              env_logger::init();
-              pollster::block_on(run(event_loop, window, cache));
-          }
-       ```
+           ```
+          #[cfg(not(target_arch = "wasm32"))]
+             {
+                 let source = assets_manager::source::FileSystem::new("./content").unwrap();
+                 let cache = AssetCache::with_source(source);
+                 env_logger::init();
+                 pollster::block_on(run(event_loop, window, cache));
+             }
+          ```
       - Under *#[cfg(target_arch = "wasm32")]*
-       ```
-       let source = assets_manager::source::Embedded::from(source::embed!("./content"));
-       let cache = AssetCache::with_source(source);
-       ```
+          ```
+          let source = assets_manager::source::Embedded::from(source::embed!("./content"));
+          let cache = AssetCache::with_source(source);
+          ```
       - Alter run function to take cache: AssetCache as a parameter
       - Add cache as a parameter to calls to run
       - Alter parameters of load_texture to take `image: &DynamicImage` instead of `path: impl AsRef<std::path::Path>`
