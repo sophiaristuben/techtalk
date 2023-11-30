@@ -109,7 +109,13 @@ members = ["run-wasm", "<game_name>"]
 **To implement Asset Manager**  \newline
 12. Add the following in the Cargo.toml file of your game
       - Under [dependencies] ->  `assets_manager = { version="0.10", features=["png","gltf","embedded"] }`
-      - Under [features] ->`webgl = ["wgpu/webgl", "vbuf"]`
+      - Under [features] ->
+         ```
+         [features]
+         default = []
+         vbuf = []
+         webgl = ["wgpu/webgl", "vbuf"]
+         ```
 
 13. Add the following imports in the main.rs file of your game folder
       ```
