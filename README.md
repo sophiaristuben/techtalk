@@ -84,7 +84,7 @@ members = ["run-wasm", "<game_name>"]
    wasm-bindgen-futures = "0.4.34"
    web-sys = { version = "0.3.64", features = ["Location", "Blob", "RequestInit", "RequestMode", "Request", "Response", "WebGl2RenderingContext", "CanvasRenderingContext2d"] }
    ```
-   10. Run `RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package <game_name>`. Now we need to add our png and content for access. The cheat solution is just to put the content folder inside the target/wasm-examples/<your_game_name> folder
+10. Run `RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package <game_name>`. Now we need to add our png and content for access. The cheat solution is just to put the content folder inside the target/wasm-examples/<your_game_name> folder
       ```markdown
       Workspace
       L game folder
