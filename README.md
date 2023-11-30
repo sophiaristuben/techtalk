@@ -69,7 +69,7 @@ members = ["run-wasm", "<game_name>"]
 
 8. In the workspace terminal run `cargo run-wasm –bin <game folder name>`. This will create a run-wasm folder.
 
-9. Now we need to add our png and content for access. The cheat solution is just to put the content folder inside the target/wasm-examples/<your_game_name> folder
+9. Run `cargo run-wasm --package <game_name>`. Now we need to add our png and content for access. The cheat solution is just to put the content folder inside the target/wasm-examples/<your_game_name> folder
       ```markdown
       Workspace
       L game folder
