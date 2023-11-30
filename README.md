@@ -108,13 +108,13 @@ members = ["run-wasm", "connect4"]
    web-sys = { version = "0.3.64", features = ["Location", "Blob", "RequestInit", "RequestMode", "Request", "Response", "WebGl2RenderingContext", "CanvasRenderingContext2d"] }
    ```
 
-#If you wish to implement asset manager, go to step 12 and then come back.
+**If you wish to implement asset manager, go to step 12 and then come back.**
 
 11. Run this command in the workspace:
 `RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package connect4 --features webgl`
 
 
-#To implement Asset Manager
+**To implement Asset Manager**
 12. Add the following in the Cargo.toml file of your workspace
       - Under [dependencies] -> `assets_manager = { version="0.10", features=["png","gltf","embedded"] }`
       - Under [features] -> `webgl = ["wgpu/webgl", "vbuf"]`
