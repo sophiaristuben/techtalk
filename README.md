@@ -14,7 +14,7 @@
 3. Paste in the new `Cargo.toml` file of the workspace:
 ```toml
 [workspace]
-members = ["run-wasm", "connect4"]
+members = ["run-wasm", "<game_name>"]
 ```
 
 4. Create a new folder called run-wasm by typing the following command in the terminal:
@@ -105,7 +105,7 @@ members = ["run-wasm", "connect4"]
 **If you wish to implement asset manager, go to step 12 and then come back.**
 
 11. Run this command in the workspace:
-`RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package connect4 --features webgl`
+`RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package <game_name>--features webgl`
 
 
 **To implement Asset Manager**
