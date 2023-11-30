@@ -22,6 +22,8 @@ members = ["run-wasm", "connect4"]
 
 4. Create a new folder called run-wasm by typing the following command in the terminal:
 `cargo new --bin run-wasm`
+
+ ```markdown
 Workspace
 L game folder
 L engine folder
@@ -34,7 +36,7 @@ L run-wasm folder
    L Cargo.toml
 L Cargo.lock
 
-5. Paste this in the Cargo.toml inside the run-wasm folder
+6. Paste this in the Cargo.toml inside the run-wasm folder
 ```
 [package]
 name = "run-wasm"
