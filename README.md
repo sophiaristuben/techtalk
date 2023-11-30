@@ -113,7 +113,7 @@ members = ["run-wasm", "connect4"]
 
 
 Resources:
-[Caro run wasm](https://github.com/rukai/cargo-run-wasm)
+[Cargo run wasm](https://github.com/rukai/cargo-run-wasm)
 
 
 
