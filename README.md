@@ -73,7 +73,7 @@ members = ["run-wasm", "connect4"]
       ├── Cargo.lock
       └── Cargo.toml
 
-8. In the workspace terminal run `cargo run-wasm –bin <game folder name>`
+8. In the workspace terminal run `cargo run-wasm –bin <game folder name>`. This will create a run-wasm folder.
 
 9. Now we need to add our png and content for access. The cheat solution is just to put the content folder inside the target/wasm-examples/<your_game_name> folder
       ```markdown
@@ -112,6 +112,8 @@ members = ["run-wasm", "connect4"]
 `RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package connect4 --features webgl`
 
 
+Resources:
+[Caro run wasm](https://github.com/rukai/cargo-run-wasm)
 
 
 
