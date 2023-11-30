@@ -69,21 +69,7 @@ members = ["run-wasm", "<game_name>"]
 
 8. In the workspace terminal run `cargo run-wasm –bin <game folder name>`. This will create a run-wasm folder.
 
-9. Run `cargo run-wasm --package <game_name>`. Now we need to add our png and content for access. The cheat solution is just to put the content folder inside the target/wasm-examples/<your_game_name> folder
-      ```markdown
-      Workspace
-      L game folder
-      L engine folder
-      L src folder
-      L run-wasm folder
-      L target folder
-         L wasm-examples folder
-            L content folder
-      L .cargo folder
-      L Cargo.lock
-      L Cargo.toml
-
-10. In the Cargo.toml inside your game folder
+9. In the Cargo.toml inside your game folder
    Add to the dependencies:
    ```
    getrandom = { version = "0.2", features = ["js"] }
@@ -101,6 +87,19 @@ members = ["run-wasm", "<game_name>"]
    wasm-bindgen-futures = "0.4.34"
    web-sys = { version = "0.3.64", features = ["Location", "Blob", "RequestInit", "RequestMode", "Request", "Response", "WebGl2RenderingContext", "CanvasRenderingContext2d"] }
    ```
+   10. Run `cargo run-wasm --package <game_name>`. Now we need to add our png and content for access. The cheat solution is just to put the content folder inside the target/wasm-examples/<your_game_name> folder
+      ```markdown
+      Workspace
+      L game folder
+      L engine folder
+      L src folder
+      L run-wasm folder
+      L target folder
+         L wasm-examples folder
+            L content folder
+      L .cargo folder
+      L Cargo.lock
+      L Cargo.toml
 
 **If you wish to implement asset manager, go to step 12 and then come back.**
 
