@@ -98,6 +98,8 @@ members = ["run-wasm", "<game_name>"]
       L Cargo.lock
       L Cargo.toml
 
+      You should get something like *http://localhost:8000* which you can paste into your browser.
+
 **If you wish to implement asset manager, go to step 12 and then come back.**
 
 11. Run this command in the workspace:
