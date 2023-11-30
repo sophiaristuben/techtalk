@@ -17,7 +17,10 @@
    └── Cargo.toml
 
 3. In the new `Cargo.toml` file of the workspace:
-
 ```toml
 [workspace]
 members = ["run-wasm", "connect4"]
+
+4. Create a new folder called run-wasm by typing the following command in the terminal:
+
+
