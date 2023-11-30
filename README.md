@@ -120,7 +120,8 @@ members = ["run-wasm", "<game_name>"]
 13. Add the following imports in the main.rs file of your game folder
       ```
       use image::DynamicImage;
-      use assets_manager::source::{Embedded, Filesystem};
+      use assets_manager::source::{Embedded, FileSystem};
+      use assets_manager::{source, AssetCache};
       ```
 14. In the main.rs of your game folder
       - At the top of the file
