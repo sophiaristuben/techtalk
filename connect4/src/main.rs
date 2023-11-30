@@ -1,4 +1,6 @@
+use assets_manager::{source, AssetCache};
 use bytemuck::{Pod, Zeroable};
+use image::{DynamicImage, GenericImageView};
 use std::{borrow::Cow, mem};
 use winit::{
     event::{Event, WindowEvent},
@@ -183,7 +185,7 @@ const SPRITES: SpriteOption = SpriteOption::VertexBuffer;
 #[cfg(all(feature = "vbuf", feature = "uniform"))]
 compile_error!("Can't choose both vbuf and uniform sprite features");
 
-async fn run(event_loop: EventLoop<()>, window: Window) {
+async fn run(event_loop: EventLoop<()>, window: Window, cache: AssetCache) {
     let size = window.inner_size();
 
     log::info!("Use sprite mode {:?}", SPRITES);
@@ -429,9 +431,20 @@ async fn run(event_loop: EventLoop<()>, window: Window) {
 
     surface.configure(&device, &config);
 
-    let (sprite_tex, _sprite_img) = load_texture("content/connect4v2.png", None, &device, &queue)
-        .await
-        .expect("Couldn't load spritesheet texture");
+    // let sprite = cache.load::<assets_manager::asset::Gltf>("content/connect4v2.png")
+    // .unwrap();
+    // let sprite_img = sprite.get_image_by_index(0);
+    // let sprite_tex = ;
+    // // frend.gpu.create_array_texture(
+    // //     &[&fox_img.to_rgba8()],
+    // //     frenderer::wgpu::TextureFormat::Rgba8Unorm,
+    // //     (fox_img.width(), fox_img.height()),
+    // //     Some("fox texture"),
+    // // );
+    let sprite = cache
+    .load::<assets_manager::asset::Png>("connect4v2")
+    .unwrap();
+    let (sprite_tex, _sprite_img) = load_texture(&sprite.read().0, None, &device, &queue).unwrap();
     let view_sprite = sprite_tex.create_view(&wgpu::TextureViewDescriptor::default());
     let sampler_sprite = device.create_sampler(&wgpu::SamplerDescriptor::default());
     let texture_bind_group = device.create_bind_group(&wgpu::BindGroupDescriptor {
@@ -543,13 +556,19 @@ async fn run(event_loop: EventLoop<()>, window: Window) {
     let mut show_end_screen = false;
     let mut win_color = "".to_string();
 
-    let (tex_yellow, _win_image) = load_texture("content/yellowWins.png",None, &device, &queue)
-        .await
-        .expect("Couldn't load game over img");
 
-    let (tex_red, _win_image) = load_texture("content/redWins.png",None, &device, &queue)
-        .await
-        .expect("Couldn't load game over img");
+    let yellow = cache
+    .load::<assets_manager::asset::Png>("connect4v2")
+    .unwrap();
+    let (tex_yellow, _win_img) = load_texture(&yellow.read().0, None, &device, &queue).unwrap();
+    // let (tex_yellow, _win_image) = load_texture("content/yellowWins.png",None, &device, &queue)
+    //     .await
+    //     .expect("Couldn't load game over img");
+
+    let red = cache
+    .load::<assets_manager::asset::Png>("connect4v2")
+    .unwrap();
+    let (tex_red, _win_img) = load_texture(&red.read().0, None, &device, &queue).unwrap();
     
     event_loop.run(move |event, _, control_flow| {
         *control_flow = ControlFlow::Wait;
@@ -838,16 +857,24 @@ async fn run(event_loop: EventLoop<()>, window: Window) {
 fn main() {
     let event_loop = EventLoop::new();
     let window = winit::window::Window::new(&event_loop).unwrap();
+
     #[cfg(not(target_arch = "wasm32"))]
     {
+        let source = assets_manager::source::FileSystem::new("./content").unwrap();
+        let cache = AssetCache::with_source(source);
         env_logger::init();
-        pollster::block_on(run(event_loop, window));
+        pollster::block_on(run(event_loop, window, cache));
     }
     #[cfg(target_arch = "wasm32")]
     {
         std::panic::set_hook(Box::new(console_error_panic_hook::hook));
         console_log::init_with_level(log::Level::Trace).expect("could not initialize logger");
         use winit::platform::web::WindowExtWebSys;
+
+        let source = assets_manager::source::Embedded::from(source::embed!("./content"));
+        let cache = AssetCache::with_source(source);
+
+
         // On wasm, append the canvas to the document body
         web_sys::window()
             .and_then(|win| win.document())
@@ -857,45 +884,18 @@ fn main() {
                     .ok()
             })
             .expect("couldn't append canvas to document body");
-        wasm_bindgen_futures::spawn_local(run(event_loop, window));
+        wasm_bindgen_futures::spawn_local(run(event_loop, window, cache));
     }
 }
 
-async fn load_texture(
-    path: impl AsRef<std::path::Path>,
+fn load_texture(
+    image: &DynamicImage,
     label: Option<&str>,
     device: &wgpu::Device,
     queue: &wgpu::Queue,
 ) -> Result<(wgpu::Texture, image::RgbaImage), Box<dyn std::error::Error>> {
-
-    #[cfg(target_arch = "wasm32")]
-    let img = {
-        let fetch = web_sys::window()
-            .map(|win| win.fetch_with_str(path.as_ref().to_str().unwrap()))
-            .unwrap();
-        let resp: web_sys::Response = wasm_bindgen_futures::JsFuture::from(fetch)
-            .await
-            .unwrap()
-            .into();
-        log::debug!("{:?} {:?}", &resp, resp.status());
-        let buf: js_sys::ArrayBuffer =
-            wasm_bindgen_futures::JsFuture::from(resp.array_buffer().unwrap())
-                .await
-                .unwrap()
-                .into();
-        log::debug!("{:?} {:?}", &buf, buf.byte_length());
-        let u8arr = js_sys::Uint8Array::new(&buf);
-        log::debug!("{:?}, {:?}", &u8arr, u8arr.length());
-        let mut bytes = vec![0; u8arr.length() as usize];
-        log::debug!("{:?}", &bytes);
-        u8arr.copy_to(&mut bytes);
-        image::load_from_memory_with_format(&bytes, image::ImageFormat::Png)
-            .map_err(|e| e.to_string())?
-            .to_rgba8()
-    };
-    #[cfg(not(target_arch = "wasm32"))]
-    let img = image::open(path.as_ref())?.to_rgba8();
-    let (width, height) = img.dimensions();
+    let image = image.to_rgba8();
+    let (width, height) = image.dimensions();
     let size = wgpu::Extent3d {
         width,
         height,
@@ -913,7 +913,7 @@ async fn load_texture(
     });
     queue.write_texture(
         texture.as_image_copy(),
-        &img,
+        &image,
         wgpu::ImageDataLayout {
             offset: 0,
             bytes_per_row: Some(4 * width),
@@ -921,5 +921,5 @@ async fn load_texture(
         },
         size,
     );
-    Ok((texture, img))
+    Ok((texture, image))
 }
