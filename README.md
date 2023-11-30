@@ -108,13 +108,70 @@ members = ["run-wasm", "connect4"]
    web-sys = { version = "0.3.64", features = ["Location", "Blob", "RequestInit", "RequestMode", "Request", "Response", "WebGl2RenderingContext", "CanvasRenderingContext2d"] }
    ```
 
+#If you wish to implement asset manager, go to step 12 and then come back.
+
 11. Run this command in the workspace:
 `RUSTFLAGS=--cfg=web_sys_unstable_apis cargo run-wasm --package connect4 --features webgl`
 
 
+To implement Asset Manager:
+12. Add the following in the Cargo.toml file of your workspace
+      - Under [dependencies] -> `assets_manager = { version="0.10", features=["png","gltf","embedded"] }`
+      - Under [features] -> `webgl = ["wgpu/webgl", "vbuf"]`
+
+13. Add the following imports in the main.rs file of your game folder
+      ```
+      use image::DynamicImage;
+      use assets_manager::source::{Embedded, Filesystem};
+      ```
+14. In the main.rs of your game folder
+      - At the top of the file
+         ```
+         #[cfg(target_arch = "wasm32")]
+         // type AssetCacheType = AssetCache<Embedded>;
+         type AssetCacheType<'a> = AssetCache<Embedded<'a>>;
+         
+         #[cfg(not(target_arch = "wasm32"))]
+         type AssetCacheType = AssetCache<FileSystem>;
+         ```
+      - In the main() function under the instantiation of event_loop and window
+        ```
+       #[cfg(not(target_arch = "wasm32"))]
+          {
+              let source = assets_manager::source::FileSystem::new("./content").unwrap();
+              let cache = AssetCache::with_source(source);
+              env_logger::init();
+              pollster::block_on(run(event_loop, window, cache));
+          }
+       ```
+      - Under *#[cfg(target_arch = "wasm32")]*
+       ```
+       let source = assets_manager::source::Embedded::from(source::embed!("./content"));
+       let cache = AssetCache::with_source(source);
+       ```
+      - Alter run function to take cache: AssetCache as a parameter
+      - Add cache as a parameter to calls to run
+      - Alter parameters of load_texture to take `image: &DynamicImage` instead of `path: impl AsRef<std::path::Path>`
+      - Delete all code for loading img in load_texture and replace with `let image = image.to_rgba8();`
+      - Replace calls to load texture with the following template
+          ```
+          let sprite = cache
+          .load::<assets_manager::asset::Png>("nameofspritepng")
+          .unwrap();
+          let (sprite_tex, _sprite_img) = load_texture(&sprite.read().0, None, &device, &queue).unwrap();
+           ```
+15. Return to step 11
+
+
+
+
+
+
+
+
 Resources:
-[Cargo run wasm](https://github.com/rukai/cargo-run-wasm)
-[Implement a WebAssembly WebGL viewer using Rust](https://blog.logrocket.com/implement-webassembly-webgl-viewer-using-rust/)
+- [Cargo run wasm](https://github.com/rukai/cargo-run-wasm)
+- [Implement a WebAssembly WebGL viewer using Rust](https://blog.logrocket.com/implement-webassembly-webgl-viewer-using-rust/)
 
 
 
