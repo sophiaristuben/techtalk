@@ -8,11 +8,8 @@
    ```markdown
    Workspace
    L game folder
-   L engine folder
    L src folder
    L Cargo.toml
-   L Cargo.lock
-
 
 3. Paste in the new `Cargo.toml` file of the workspace:
 ```toml
@@ -26,15 +23,12 @@ members = ["run-wasm", "connect4"]
     ```markdown
    Workspace
    L game folder
-   L engine folder
-   L content folder
    L src folder
-   L target folder
    L run-wasm folder
       L src folder
          L main.rs
       L Cargo.toml
-   L Cargo.lock
+   L Cargo.toml
 
 5. Paste this in the Cargo.toml inside the run-wasm folder
    ```
