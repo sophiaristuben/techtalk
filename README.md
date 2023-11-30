@@ -14,7 +14,7 @@
    L Cargo.lock
 
 
-3. In the new `Cargo.toml` file of the workspace:
+3. Paste in the new `Cargo.toml` file of the workspace:
 ```toml
 [workspace]
 members = ["run-wasm", "connect4"]
