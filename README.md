@@ -126,7 +126,21 @@ members = ["run-wasm", "<game_name>"]
          #[cfg(not(target_arch = "wasm32"))]
          type AssetCacheType = AssetCache<FileSystem>;
          ```
-      - In the main() function under the instantiation of event_loop and window
+      - In the main() function under the instantiation of event_loop and window.
+           We can see a block that looks like:
+           ```
+           #[cfg(not(target_arch = "wasm32"))]
+             {
+                 env_logger::init();
+                 pollster::block_on(run(event_loop, window));
+             }
+           ```
+           We want to paste these:
+           ```
+           let source = assets_manager::source::FileSystem::new("./content").unwrap();
+           let cache = AssetCache::with_source(source);
+           ```
+           So it looks like
            ```
           #[cfg(not(target_arch = "wasm32"))]
              {
