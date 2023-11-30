@@ -36,7 +36,7 @@ members = ["run-wasm", "connect4"]
       L Cargo.toml
    L Cargo.lock
 
-6. Paste this in the Cargo.toml inside the run-wasm folder
+5. Paste this in the Cargo.toml inside the run-wasm folder
    ```
    [package]
    name = "run-wasm"
@@ -49,11 +49,11 @@ members = ["run-wasm", "connect4"]
    ```
 
 6. Paste this in the main.rs file of the run-wasm folder
-```
-fn main() {
-   cargo_run_wasm::run_wasm_with_css("body { margin: 0px; }");
-}
-```
+   ```
+   fn main() {
+      cargo_run_wasm::run_wasm_with_css("body { margin: 0px; }");
+   }
+   ```
 
 7. Inside workspace create a `.cargo/config` and paste this inside:
    ```
