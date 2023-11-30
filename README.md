@@ -116,8 +116,8 @@ members = ["run-wasm", "connect4"]
 
 **To implement Asset Manager**
 12. Add the following in the Cargo.toml file of your workspace
-      - Under [dependencies]:  `assets_manager = { version="0.10", features=["png","gltf","embedded"] }`
-      - Under [features]: `webgl = ["wgpu/webgl", "vbuf"]`
+      - Under [dependencies] ->  `assets_manager = { version="0.10", features=["png","gltf","embedded"] }`
+      - Under [features] ->`webgl = ["wgpu/webgl", "vbuf"]`
 
 13. Add the following imports in the main.rs file of your game folder
       ```
