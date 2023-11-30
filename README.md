@@ -176,7 +176,7 @@ members = ["run-wasm", "<game_name>"]
                  wasm_bindgen_futures::spawn_local(run(event_loop, window));
              }
            ```
-      - Alter run function to take `cache: AssetCache` as a parameter
+      - Alter run function to take `cache: AssetCacheType<'_>` as a parameter
       - Add `cache` as a parameter to calls to run
       - Alter parameters of load_texture to take `image: &DynamicImage` instead of `path: impl AsRef<std::path::Path>`
       - Delete all code for loading img in load_texture and replace with `let image = image.to_rgba8();`
